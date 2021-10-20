@@ -1,8 +1,8 @@
 
 
-//import negocio.VendedoresNeg;
+
 import vista.Menu;
-//import negocio.ProductosNeg;
+
 
 public class main{   
 
