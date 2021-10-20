@@ -1,5 +1,6 @@
 package negocio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import datos.ProductosDAT;
@@ -60,6 +61,30 @@ public class ProductosNeg{
                 return productos2.getNombre();
         }
         return "";
+    }
+
+    public List<Productos> buscarPorNombreParcial(String nombreParcial){
+        List<Productos> todosLosProductos = productosDatos.leerProductos();
+        List<Productos> productosEncontrados = new ArrayList<Productos>();
+
+        for (Productos producto : todosLosProductos) {
+            if(producto.getNombre().contains(nombreParcial))
+            productosEncontrados.add(producto);
+        }
+
+        return productosEncontrados;
+    }
+
+    public List<Productos> buscarPorCategoriaParcial(String categoriaParcial){
+        List<Productos> todosLosProductos = productosDatos.leerProductos();
+        List<Productos> productosEncontrados = new ArrayList<Productos>();
+
+        for (Productos producto : todosLosProductos) {
+            if(producto.getCategoria().contains(categoriaParcial))
+                productosEncontrados.add(producto);
+        }
+
+        return productosEncontrados;
     }
 
 

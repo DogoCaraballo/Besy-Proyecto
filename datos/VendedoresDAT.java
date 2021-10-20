@@ -55,7 +55,7 @@ public class VendedoresDAT {
 
         float comision = 0;
         for (Ventas venta : ventasLista) {
-            System.out.println(venta);
+            //System.out.println(venta);
             if(codigo == venta.getCodigoVendedor()){
                 if(venta.getProductosTotales()>2)
                     comision += venta.getMontoTotal()*0.1;

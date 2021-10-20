@@ -1,7 +1,7 @@
 
 
 
-import vista.Menu;
+import vistas.Menu;
 
 
 public class main{   

@@ -14,7 +14,7 @@ public class VentasDAT {
 
     public boolean guardarVenta(Ventas vend){
         ventasLista.add(vend);
-        System.out.println(vend);
+        //System.out.println(vend);
         return true;
     }
 

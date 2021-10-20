@@ -46,7 +46,7 @@ public class Productos {
         this.precio = precio;
     }
 
-    public String getCaterogria() {
+    public String getCategoria() {
         return this.categoria;
     }
 
@@ -96,7 +96,7 @@ public class Productos {
             " Código: " + getCodigo() + "" +
             ", nombre: " + getNombre() + "" +
             ", precio: $" + getPrecio() + "" +
-            ", caterogría: " + getCaterogria() + "" +
+            ", caterogría: " + getCategoria() + "" +
             "";
     }
 
