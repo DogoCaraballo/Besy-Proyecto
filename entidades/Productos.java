@@ -8,10 +8,15 @@ public class Productos {
     private String nombre;
     private float precio;
     private String categoria;
+    private static int codigoNum = 1;
 
+    public Productos(){
+        
+    }
 
-    public Productos(int codigo, String nombre, float precio, String categoria) {
-        this.codigo = codigo;
+    public Productos( String nombre, float precio, String categoria) {
+        this.codigo = codigoNum;
+        Productos.codigoNum+=1;
         this.nombre = nombre;
         this.precio = precio;
         this.categoria = categoria;
@@ -87,12 +92,12 @@ public class Productos {
 
     @Override
     public String toString() {
-        return "{" +
-            " codigo='" + getCodigo() + "'" +
-            ", nombre='" + getNombre() + "'" +
-            ", precio='" + getPrecio() + "'" +
-            ", caterogria='" + getCaterogria() + "'" +
-            "}";
+        return "" +
+            " Código: " + getCodigo() + "" +
+            ", nombre: " + getNombre() + "" +
+            ", precio: $" + getPrecio() + "" +
+            ", caterogría: " + getCaterogria() + "" +
+            "";
     }
 
     

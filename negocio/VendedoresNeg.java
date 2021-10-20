@@ -1,12 +1,15 @@
 package negocio;
 
+import java.util.List;
+
+import datos.VendedoresDAT;
 import entidades.Vendedores;
 
 public class VendedoresNeg{
        
-    
+    VendedoresDAT vendedoresDatos = new VendedoresDAT();
 
-    public Vendedores NuevoVendedor(String nombre, String sueldo, String codigo ) throws Exception{
+    public boolean NuevoVendedor(String nombre, String sueldo) throws Exception{
 
         if (nombre.length()<2 || nombre.matches(".*\\d.*")
         ){
@@ -24,10 +27,31 @@ public class VendedoresNeg{
         }
 
 
-        Vendedores vend = new Vendedores(nombre,Float.parseFloat(sueldo), codigo);
+        Vendedores vend = new Vendedores(nombre,Float.parseFloat(sueldo));
 
-        System.out.println(vend.toString());
-        return vend;
+        
+        vendedoresDatos.guardarVendedor(vend);
+
+        //System.out.println(vend.toString());
+
+        return true;
+    }
+
+    public List<Vendedores> leerVendedores(){
+        
+        //System.out.println(vendedoresDatos.leerVendedores());
+        return vendedoresDatos.leerVendedores();
+    }
+
+    public boolean existeVendedor(int id){
+        return vendedoresDatos.existeVendedor(id);
+    }
+
+    public float buscarComisionDe(int id){
+        return vendedoresDatos.contarComisionDe(id);
+    }
+    public float buscarComisionDe(Vendedores vendedor){
+        return vendedoresDatos.contarComisionDe(vendedor.getCodigo());
     }
 
 

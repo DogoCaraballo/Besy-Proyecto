@@ -1,12 +1,18 @@
 package negocio;
+import datos.VentasDAT;
 import entidades.Ventas;
 
 public class VentasNeg {
-    public Ventas NuevaVenta(String vendedor,String cantidad,String total){
 
 
-        Ventas venta = new Ventas(Integer.parseInt(vendedor), Integer.parseInt(cantidad), Float.parseFloat(total));
-
-        return venta;
+    public void NuevaVenta(Ventas venta){
+        VentasDAT ventasDATOS = new VentasDAT();
+        ventasDATOS.guardarVenta(venta);
     }
+
+    public int ultimaVenta(){
+        Ventas venta = new Ventas();
+        return venta.getUltimaVenta();
+    }
+
 }

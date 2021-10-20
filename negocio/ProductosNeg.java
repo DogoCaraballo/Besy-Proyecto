@@ -1,12 +1,15 @@
 package negocio;
 
+import java.util.List;
+
+import datos.ProductosDAT;
 import entidades.Productos;
 
 public class ProductosNeg{
        
-    
+    ProductosDAT productosDatos = new ProductosDAT();
 
-    public Productos NuevoProducto(String codigo, String nombre, String precio , String categoria) throws Exception{
+    public boolean NuevoProducto(String nombre, String precio , String categoria) throws Exception{
 
         if (nombre.length()<2
         ){
@@ -20,30 +23,44 @@ public class ProductosNeg{
 
         try {
             float sald = Float.parseFloat(precio) ;
-            if (sald < 0) throw new Exception("Precio negativo");
+            if (sald < 0) throw new Exception();
             
         }
         catch (Exception e){
-            if (e.getMessage() == "Precio negativo") throw new Exception("Precio negativo");
             throw new Exception("Precio inválido");
         }
 
-        try {
-            Float.parseFloat(codigo) ;
-        }
-        catch (Exception e){
-            throw new Exception(e);
-        }
-
-        //BUSCAR CODIGO REPETIDO
 
 
-        Productos prod = new Productos(Integer.parseInt(codigo), nombre ,Float.parseFloat(precio), categoria);
 
-        System.out.println(prod.toString());
-        return prod;
+        Productos prod = new Productos(nombre ,Float.parseFloat(precio), categoria);
+        productosDatos.guardarProducto(prod);
+
+        //System.out.println(prod.toString());
+        return true;
     }
 
+    public List<Productos> leerProductos() {
+        return productosDatos.leerProductos();
+    }
+
+    public float leerPrecio(int codigo) throws Exception{
+        List<Productos> productos = productosDatos.leerProductos();
+        for (Productos productos2 : productos) {
+            if (codigo == productos2.getCodigo())
+                return productos2.getPrecio();
+        }
+        throw new Exception("Producto inexistente.");
+    }
+
+    public String leerNombre(int codigo){
+        List<Productos> productos = productosDatos.leerProductos();
+        for (Productos productos2 : productos) {
+            if (codigo == productos2.getCodigo())
+                return productos2.getNombre();
+        }
+        return "";
+    }
 
 
 }

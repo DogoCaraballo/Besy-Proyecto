@@ -6,17 +6,51 @@ public class Ventas {
     private int codigoVendedor;
     private int numeroVenta;
     private static int numeroVentaNum = 1;
-    private int cantidadProductos;
-    private float valorTotal;
+    private int productosTotales;
+    private float montoTotal;
 
+    public Ventas() {
+    }
 
-    public Ventas(int vendedor, int cantidadProductos, float valorTotal) {
-        this.codigoVendedor = vendedor;
+    public Ventas(int codigoVendedor, int productosTotales, float montoTotal) {
+        this.codigoVendedor = codigoVendedor;
         this.numeroVenta = numeroVentaNum;
         Ventas.numeroVentaNum+=1;
-        this.cantidadProductos = cantidadProductos;
-        this.valorTotal = valorTotal;
+        this.productosTotales = productosTotales;
+        this.montoTotal = montoTotal;
     }
+
+    public int getProductosTotales() {
+        return this.productosTotales;
+    }
+
+    public void setProductosTotales(int productosTotales) {
+        this.productosTotales = productosTotales;
+    }
+
+    public float getMontoTotal() {
+        return this.montoTotal;
+    }
+
+    public void setMontoTotal(int montoTotal) {
+        this.montoTotal = montoTotal;
+    }
+
+    public Ventas productosTotales(int productosTotales) {
+        setProductosTotales(productosTotales);
+        return this;
+    }
+
+    public Ventas montoTotal(int montoTotal) {
+        setMontoTotal(montoTotal);
+        return this;
+    }
+
+    public int getUltimaVenta(){
+        return Ventas.numeroVentaNum;
+    }
+
+
 
     public int getCodigoVendedor() {
         return this.codigoVendedor;
@@ -34,22 +68,6 @@ public class Ventas {
         this.numeroVenta = numeroVenta;
     }
 
-    public int getCantidadProductos() {
-        return this.cantidadProductos;
-    }
-
-    public void setCantidadProductos(int cantidadProductos) {
-        this.cantidadProductos = cantidadProductos;
-    }
-
-    public float getValorTotal() {
-        return this.valorTotal;
-    }
-
-    public void setValorTotal(float valorTotal) {
-        this.valorTotal = valorTotal;
-    }
-
     public Ventas codigoVendedor(int codigoVendedor) {
         setCodigoVendedor(codigoVendedor);
         return this;
@@ -60,15 +78,7 @@ public class Ventas {
         return this;
     }
 
-    public Ventas cantidadProductos(int cantidadProductos) {
-        setCantidadProductos(cantidadProductos);
-        return this;
-    }
 
-    public Ventas valorTotal(float valorTotal) {
-        setValorTotal(valorTotal);
-        return this;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -78,12 +88,12 @@ public class Ventas {
             return false;
         }
         Ventas ventas = (Ventas) o;
-        return Objects.equals(codigoVendedor, ventas.codigoVendedor) && numeroVenta == ventas.numeroVenta && cantidadProductos == ventas.cantidadProductos && valorTotal == ventas.valorTotal;
+        return Objects.equals(codigoVendedor, ventas.codigoVendedor) && numeroVenta == ventas.numeroVenta;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(codigoVendedor, numeroVenta, cantidadProductos, valorTotal);
+        return Objects.hash(codigoVendedor, numeroVenta);
     }
 
     @Override
@@ -91,10 +101,9 @@ public class Ventas {
         return "{" +
             " codigoVendedor='" + getCodigoVendedor() + "'" +
             ", numeroVenta='" + getNumeroVenta() + "'" +
-            ", cantidadProductos='" + getCantidadProductos() + "'" +
-            ", valorTotal='" + getValorTotal() + "'" +
+            ", productosTotales='" + getProductosTotales() + "'" +
+            ", montoTotal='" + getMontoTotal() + "'" +
             "}";
     }
-
 
 }

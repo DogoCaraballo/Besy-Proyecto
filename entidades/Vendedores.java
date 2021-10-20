@@ -4,16 +4,17 @@ public class Vendedores {
 
     private String nombre;
     private float sueldo;
-    private String codigo;
-    private float comision;
+    private int codigo;
+
+    private static int codigoNum = 1;
 
 
 
-    public Vendedores(String Nombre, float Sueldo, String codigo) {
+    public Vendedores(String Nombre, float Sueldo) {
         this.nombre = Nombre;
         this.sueldo = Sueldo;
-        this.comision = 0;
-        this.codigo = codigo;
+        this.codigo = codigoNum;
+        Vendedores.codigoNum+=1;
     }
 
     public String getNombre() {
@@ -26,11 +27,11 @@ public class Vendedores {
 
 
 
-    public String getCodigo() {
+    public int getCodigo() {
         return this.codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
@@ -42,13 +43,6 @@ public class Vendedores {
         this.sueldo = sueldo;
     }
 
-    public float getComision() {
-        return this.comision;
-    }
-
-    public void setComision(float comision) {
-        this.sueldo = comision;
-    }
 
     public Vendedores nombre(String nombre) {
         setNombre(nombre);
@@ -56,7 +50,7 @@ public class Vendedores {
     }
 
 
-    public Vendedores codigo(String codigo) {
+    public Vendedores codigo(int codigo) {
         setCodigo(codigo);
         return this;
     }
@@ -66,19 +60,14 @@ public class Vendedores {
         return this;
     }
 
-    public Vendedores comision(float comision) {
-        setSueldo(comision);
-        return this;
-    }
 
     @Override
     public String toString() {
-        return "{" +
-            " nombre='" + getNombre() + "'" +
-            ", codigo='" + getCodigo() + "'" +
-            ", sueldo='" + getSueldo() + "'" +
-            ", comision='" + getComision() + "'" +
-            "}";
+        return "" +
+            " Nombre: " + getNombre() + "" +
+            ", Código: " + getCodigo() + "" +
+            ", Sueldo $" + getSueldo() + "" +
+            "";
     }
 
 
