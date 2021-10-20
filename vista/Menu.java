@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Scanner;
 
 import entidades.Ventas;
-import entidades.VentasDetalle;
 import negocio.ProductosNeg;
 import negocio.VendedoresNeg;
 
@@ -18,7 +17,6 @@ public class Menu {
 
 
     public List<Ventas> listadoVentas;
-    public List<VentasDetalle> listadoVentasDetalle;
     
 
     //0

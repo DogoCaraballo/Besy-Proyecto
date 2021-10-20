@@ -3,24 +3,26 @@ package entidades;
 import java.util.Objects;
 
 public class Ventas {
-    private String codigoVendedor;
+    private int codigoVendedor;
     private int numeroVenta;
     private static int numeroVentaNum = 1;
+    private int cantidadProductos;
+    private float valorTotal;
 
-    public Ventas() {
-    }
 
-    public Ventas(String codigoVendedor, int numeroVenta) {
-        this.codigoVendedor = codigoVendedor;
+    public Ventas(int vendedor, int cantidadProductos, float valorTotal) {
+        this.codigoVendedor = vendedor;
         this.numeroVenta = numeroVentaNum;
         Ventas.numeroVentaNum+=1;
+        this.cantidadProductos = cantidadProductos;
+        this.valorTotal = valorTotal;
     }
 
-    public String getCodigoVendedor() {
+    public int getCodigoVendedor() {
         return this.codigoVendedor;
     }
 
-    public void setCodigoVendedor(String codigoVendedor) {
+    public void setCodigoVendedor(int codigoVendedor) {
         this.codigoVendedor = codigoVendedor;
     }
 
@@ -32,13 +34,39 @@ public class Ventas {
         this.numeroVenta = numeroVenta;
     }
 
-    public Ventas codigoVendedor(String codigoVendedor) {
+    public int getCantidadProductos() {
+        return this.cantidadProductos;
+    }
+
+    public void setCantidadProductos(int cantidadProductos) {
+        this.cantidadProductos = cantidadProductos;
+    }
+
+    public float getValorTotal() {
+        return this.valorTotal;
+    }
+
+    public void setValorTotal(float valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
+    public Ventas codigoVendedor(int codigoVendedor) {
         setCodigoVendedor(codigoVendedor);
         return this;
     }
 
     public Ventas numeroVenta(int numeroVenta) {
         setNumeroVenta(numeroVenta);
+        return this;
+    }
+
+    public Ventas cantidadProductos(int cantidadProductos) {
+        setCantidadProductos(cantidadProductos);
+        return this;
+    }
+
+    public Ventas valorTotal(float valorTotal) {
+        setValorTotal(valorTotal);
         return this;
     }
 
@@ -50,12 +78,12 @@ public class Ventas {
             return false;
         }
         Ventas ventas = (Ventas) o;
-        return Objects.equals(codigoVendedor, ventas.codigoVendedor) && numeroVenta == ventas.numeroVenta;
+        return Objects.equals(codigoVendedor, ventas.codigoVendedor) && numeroVenta == ventas.numeroVenta && cantidadProductos == ventas.cantidadProductos && valorTotal == ventas.valorTotal;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(codigoVendedor, numeroVenta);
+        return Objects.hash(codigoVendedor, numeroVenta, cantidadProductos, valorTotal);
     }
 
     @Override
@@ -63,6 +91,8 @@ public class Ventas {
         return "{" +
             " codigoVendedor='" + getCodigoVendedor() + "'" +
             ", numeroVenta='" + getNumeroVenta() + "'" +
+            ", cantidadProductos='" + getCantidadProductos() + "'" +
+            ", valorTotal='" + getValorTotal() + "'" +
             "}";
     }
 
